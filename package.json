@@ -1,0 +1,62 @@
+{
+  "name": "lambda-notifications",
+  "version": "1.0.0",
+  "description": "Serveless function for send notifications",
+  "main": "index.js",
+  "author": "Andre Isaac",
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc",
+    "build:serverless": "tsc -p tsconfig.build.json",
+    "start:serverless": "serverless offline start",
+    "start:dev": "npm run build:serverless && serverless offline start",
+    "start": "npm run build && node dist\\index.js",
+    "test": "ava"
+  },
+  "dependencies": {
+    "@seidor/lib-outbound-common": "^0.5.24",
+    "aws-sdk": "^2.1295.0",
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "pino": "^7.9.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.82",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/axios": "^0.14.0",
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^16.11.7",
+    "@types/pino": "^7.0.5",
+    "@types/sinon": "^10.0.11",
+    "@types/uuid": "^8.3.3",
+    "@types/ws": "^8.5.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "ava": "^3.15.0",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2",
+    "serverless": "^2.66.2",
+    "serverless-offline": "^8.2.0",
+    "serverless-plugin-typescript": "^2.1.0",
+    "sinon": "^13.0.1",
+    "tsconfig-paths": "^3.10.1",
+    "sucrase": "^3.20.3",
+    "typescript": "^4.9.4"
+  },
+  "ava": {
+    "compile": false,
+    "cache": false,
+    "files": [
+      "!dist",
+      "src/tests/**/*.test.ts"
+    ],
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "sucrase/register"
+    ]
+  }
+}

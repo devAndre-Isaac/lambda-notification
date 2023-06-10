@@ -1,0 +1,25 @@
+service: lambda
+useDotenv: true
+
+frameworkVersion: '>=2.3.0'
+
+provider:
+    name: aws
+    region: us-east-1
+    runtime: nodejs14.x
+
+functions:
+    handler:
+        handler: src/index.handler
+        events:
+            - httpApi:
+                  path: /
+                  method: post
+
+plugins:
+    - serverless-offline
+    - serverless-plugin-typescript
+    
+custom:
+  serverless-offline:
+    httpPort: 3005
